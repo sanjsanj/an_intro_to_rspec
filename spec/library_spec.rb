@@ -25,15 +25,16 @@ describe "Library object" do
     describe "#new" do
         context "with no parameters" do
             it "has no books" do # convention to write tests in present tense
-                lib = Library.new
-                lib.should have(0).books
+              Library.new { should have(0).books }
+              #lib.should have(0).books  ## must be called within a block
                 # we are checking the length of the books array
             end
         end
 
         context "with a yml file name parameter" do
             it "has five books" do
-                @lib.should have(5).books
+              Library.new("books.yml") { should have(5).books }
+              #@lib.should have(5).books  ## must be called within a block
             end
         end
     end
